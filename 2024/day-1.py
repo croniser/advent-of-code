@@ -1,18 +1,19 @@
 PATH = "2024/resources/day-1/dataset.txt"
+DEBUG = False
 # PATH = "2024/resources/day-1/dataset-test.txt"
 
-def compareDistanceLists(array1, array2):
-    sum = 0
+def compare_distance_lists(array1: list[int], array2: list[int]) -> int:
+    aggregate = 0
     array1.sort()
     array2.sort()
     for i, elem in enumerate(array1):
-        diff = abs(elem - array2[i])
-        print(i, elem, array2[i], diff)
-        sum += diff
-    return sum
+        delta = abs(elem - array2[i])
+        if DEBUG: print(i, elem, array2[i], diff)
+        aggregate += delta
+    return aggregate
 
 
-def loadData(path):
+def load_data(path):
     with open(path, "r") as file:
         cols = [
             list(col)
@@ -24,10 +25,9 @@ def loadData(path):
         ]
 
 
-def init():
-    columns = loadData(PATH)
-    sum = compareDistanceLists(columns[0], columns[1])
-    print("the sum is: ", sum)
+def main() -> int:
+    columns = load_data(PATH)
+    return compare_distance_lists(columns[0], columns[1])
 
 
-init()
+print("The answer is: ", main())
