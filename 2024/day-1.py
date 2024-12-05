@@ -1,5 +1,5 @@
-locationArray1 = [3,4,2,1,3,3]
-locationArray2 = [4,3,5,3,9,3]
+PATH = "2024/resources/day-1/dataset.txt"
+# PATH = "2024/resources/day-1/dataset-test.txt"
 
 def compareDistanceLists(array1, array2):
     sum = 0
@@ -11,5 +11,23 @@ def compareDistanceLists(array1, array2):
         sum += diff
     return sum
 
-print("The sum of differences is: ", compareDistanceLists(locationArray1, locationArray2));
-# https://adventofcode.com/2024/day/1/input
+
+def loadData(path):
+    with open(path, "r") as file:
+        cols = [
+            list(col)
+            for col in zip(*(line.split() for line in file.read().splitlines()))
+        ]
+        return [
+            [int(x) for x in cols[0]],
+            [int(x) for x in cols[1]]
+        ]
+
+
+def init():
+    columns = loadData(PATH)
+    sum = compareDistanceLists(columns[0], columns[1])
+    print("the sum is: ", sum)
+
+
+init()
