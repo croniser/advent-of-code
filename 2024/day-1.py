@@ -1,6 +1,6 @@
 PATH = "2024/resources/day-1/dataset.txt"
-DEBUG = False
 # PATH = "2024/resources/day-1/dataset-test.txt"
+DEBUG = False
 
 def compare_distance_lists(array1: list[int], array2: list[int]) -> int:
     aggregate = 0
